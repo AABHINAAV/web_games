@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <style>
+             @font-face{
+
+                font-family:'lelefont';
+                src:url(HEADPLANE.TTF);
+            }
+            body
+            {
+                padding:0;
+                margin:0;
+                background:rgb(255, 255, 41);
+                font-family: "lelefont";
+                background-color:#e485a3;
+            }
+            .container{
+                position:relative;
+                top:30%;
+                left:27%;
+                transform:translate(-50%,-50%);
+                display:flex;
+                height:auto;
+                width:fit-content;
+                padding:0;
+                margin:0;
+            }
+            .container div
+            {
+                height:100px;
+                width:100px;
+                display: flex;
+                align-content: center;
+                line-height:100px;
+                justify-content: center;
+                border-radius:50%;
+                font-size:40px;
+                background:yellow;
+                box-shadow: 3px 3px 10px rgba(0,0,0,0.56),
+                            -3px -3px 10px rgb(255, 255, 255);
+            }
+            .hr,.min,.sec{
+                margin:0 20px;
+            }
+            .ms{
+                margin:0 30px;
+            }
+            .container div::after{
+                font-size:20px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                background:yellow;
+                bottom:-45px;
+                height:40px;
+                box-shadow: 3px 3px 10px rgba(0,0,0,0.56),
+                            -3px -3px 10px rgb(255, 255, 255);
+            }
+            .hr::after{
+                content:"HOURS";
+                position:absolute;
+                width:80px;
+                border-radius:10px;
+                box-sizing: border-box;
+            }
+            .min::after{
+                content:"MINUTE";
+                position:absolute;
+                height:30px;
+                width:90px;
+                border-radius:10px;
+                box-sizing: border-box;
+            }
+            .sec::after{
+                content:"SECONDS";
+                position:absolute;
+                width:100px;
+                border-radius:10px;
+                box-sizing: border-box;
+            }
+            .ms::after{
+                content:"MILISECONDS";
+                position:absolute;
+                width:130px;
+                border-radius:10px;
+                box-sizing: border-box;
+            }
+            .start{
+                font-family:'lelefont';
+                height:70px;
+                width:160px;
+                color:white;
+                background:#1a349c;
+                border:none;
+                outline:none;
+                font-size:34px;
+                position:absolute;
+                bottom:30%;
+                left:5%;
+                border-radius:10px;
+                box-shadow: 3px 3px 10px 4px rgba(0,0,0,0.56),
+                            -3px -3px 10px 2px rgb(255, 255, 255);
+            }
+            .pin{
+                font-family:'lelefont';
+                height:70px;
+                width:160px;
+                color:white;
+                background:#1a349c;
+                border:none;
+                outline:none;
+                font-size:34px;
+                position:absolute;
+                bottom:30%;
+                left:21%;
+                border-radius:10px;
+                box-shadow: 3px 3px 10px 4px rgba(0,0,0,0.56),
+                            -3px -3px 10px 2px rgb(255, 255, 255);
+            }
+            .reset{
+                font-family:'lelefont';
+                height:70px;
+                width:160px;
+                color:white;
+                background:#1a349c;
+                border:none;
+                outline:none;
+                font-size:34px;
+                position:absolute;
+                bottom:30%;
+                left:36%;
+                border-radius:10px;
+                box-shadow: 3px 3px 10px 4px rgba(0,0,0,0.56),
+                            -3px -3px 10px 2px rgb(255, 255, 255);
+            }
+            .stop{
+                font-family:'lelefont';
+                height:70px;
+                width:160px;
+                color:white;
+                background:#1a349c;
+                border:none;
+                outline:none;
+                font-size:34px;
+                position:absolute;
+                bottom:15%;
+                left:21%;
+                border-radius:10px;
+                box-shadow: 3px 3px 10px 4px rgba(0,0,0,0.56),
+                            -3px -3px 10px 2px rgb(255, 255, 255);
+            }
+            .clear{
+                font-family:'lelefont';
+                height:70px;
+                width:160px;
+                color:white;
+                background:#1a349c;
+                border:none;
+                outline:none;
+                font-size:34px;
+                position:absolute;
+                bottom:15%;
+                left:36%;
+                border-radius:10px;
+                box-shadow: 3px 3px 10px 4px rgba(0,0,0,0.56),
+                            -3px -3px 10px 2px rgb(255, 255, 255);
+            }
+            .show{
+                position:absolute;
+                top:10%;
+                right:25%;
+                height:80vh;
+                width:20vw;
+                border:1px red solid;
+                background:#f4b7ca;
+                border:none;
+                outline:none;
+                border-radius:20px;
+                font-size:30px;
+                font-family:'lelefont';
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">            
+            <div class="hr">00</div>           
+            <div class="min">00</div>
+            <div class="sec">00</div>   
+            <div class="ms">00</div>     
+        </div>
+        <button class="start">START</button>
+        <button class="pin">PIN TIME</button>
+        <button class="reset">RESET</button>
+        <button class="stop">STOP</button>
+        <button class="clear">CLEAR</button>
+        <textarea class="show" cols="30" rows="10"></textarea>
+        <script>
+            var hr=0;
+            var min=0;
+            var sec=0;
+            var ms=0;
+            time=()=>{
+                ms+=1;
+                document.querySelector(".ms").innerHTML=ms;
+                if(ms>10){
+                    sec++;
+                    document.querySelector(".sec").innerHTML=sec;
+                    ms=ms%10;
+                }
+                if(sec>60){
+                    min++;
+                    document.querySelector(".min").innerHTML=min;
+                    sec=sec%60;
+                }
+                if(min>60){
+                    hr++;
+                    document.querySelector(".hr").innerHTML=hr;
+                    min=min%60;
+                }
+            }
+            var id;
+            document.querySelector(".start").addEventListener("click",()=>{
+                id=setInterval(time,100);
+            });
+            document.querySelector(".pin").addEventListener("click",()=>{
+                document.querySelector(".show").insertAdjacentHTML("beforeend",`${hr} : ${min} : ${sec} : ${ms}\n`);
+            });
+            document.querySelector(".reset").addEventListener("click",()=>{
+                ms=sec=min=hr=0;
+                document.querySelector(".ms").innerHTML="00";
+                document.querySelector(".sec").innerHTML="00";
+                document.querySelector(".min").innerHTML="00";
+                document.querySelector(".hr").innerHTML="00";
+            });
+            document.querySelector(".stop").addEventListener("click",()=>{
+                clearInterval(id);
+            });
+            document.querySelector(".clear").addEventListener("click",()=>{
+                document.querySelector(".show").innerHTML="";
+            });
+        </script>
+    </body>
+</html>
