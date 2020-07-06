@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>JUMBLE WORD</title>
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                font-family: arial;
+            }
+            body{
+                display:flex;
+                flex-direction:column;
+                background: rgb(206, 204, 204);
+            }
+            header{
+                background:greenyellow;
+                font-size: 2em;
+                font-weight: 600;
+                height: 15vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .container{
+                height:84vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                
+            }
+            #inpt,#btn,#outpt,#startbtn{
+                margin:0.5rem;
+            }
+            #startbtn{
+                height:3rem;
+                width:10rem;
+                background: rgb(185, 21, 21);
+                color:white;
+                font-size:1.2rem;
+                border:none;
+                outline:none;
+                border-radius:30px;
+            }
+            #hint{
+                font-size: 1.5rem;
+                font-weight: 600;
+                visibility: hidden;
+                text-align: center;
+            }
+            #inpt{
+                padding:0;
+                height:4rem;
+                width:20rem;
+                border:none;
+                outline:none;
+                border-radius:40px;
+                text-align:center;
+                font-size: 1.5rem;
+            }
+            #btn{
+                height:3rem;
+                width:10rem;
+                background: rgb(185, 21, 21);
+                color:white;
+                font-size:1.2rem;
+                border:none;
+                outline:none;
+                border-radius:30px;
+            }
+            #outpt{
+                font-size: 1.5rem;
+                font-weight: 600;
+                visibility: hidden;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header>JUMBLE WORD</header>
+        <div class="container">
+            <input type="button" value="PLAY" id="startbtn">
+            <label id="hint">a</label>
+            <input type="text" id="inpt" placeholder="input your answer">
+            <input type="button" value="CHECK" id="btn">
+            <label id="outpt">a</label>
+        </div>
+        <script>
+            let strt=document.querySelector("#startbtn");
+            let hint=document.querySelector("#hint");
+            let input=document.querySelector("#inpt");
+            let btn=document.querySelector("#btn");
+            let output=document.querySelector("#outpt");
+            var words=["c++","python","java","html","css","javascript","sql","kotlin","swift","shell scripting","es6","php","sass","node.js","mongodb"];
+            let str,newstr;
+            var x;
+            let chances;
+            strt.addEventListener("click",()=>{
+                chances=0;
+                input.value="";
+                hint.style.visibility="visible";
+                output.style.visibility="hidden";
+                strt.value="PLAY AGAIN";
+                let i=Math.floor(Math.random()*(words.length));
+                x=words[i];
+                newstr=jumbleword(x.split("")).join("");
+                hint.innerHTML=newstr;
+            });
+            jumbleword=(str)=>{
+                for(let i=str.length-1;i>=0;i--){
+                    let j=Math.floor(Math.random()*i);
+                    [str[i],str[j]]=[str[j],str[i]];
+                }
+                return str;
+            }
+            btn.addEventListener("click",()=>{
+                chances++;
+                ans=input.value;
+                if(ans==x){
+                    output.style.visibility="visible";
+                    output.innerHTML=`correct ans in ${chances}<br>press play again to play once more`;
+                }
+                else{
+                    output.style.visibility="visible";
+                    output.innerHTML="incorrect answer....try again";
+                }
+            });
+        </script>
+    </body>
+</html>

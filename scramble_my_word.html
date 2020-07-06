@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>SCRAMBLE MY WORD</title>
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                font-family: arial;
+            }
+            body{
+                display:flex;
+                flex-direction:column;
+                background: rgb(206, 204, 204);
+            }
+            header{
+                background:greenyellow;
+                font-size: 2em;
+                font-weight: 600;
+                height: 15vh;
+                display: flex;
+                justify-content:center;
+                align-items:center;
+            }
+            .container{
+                height:84vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                
+            }
+            #inpt,#btn,#outpt{
+                margin:0.5rem;
+            }
+            #inpt{
+                padding:0;
+                height:4rem;
+                width:20rem;
+                border:none;
+                outline:none;
+                border-radius:40px;
+                text-align:center;
+                font-size: 1.5rem;
+            }
+            #btn{
+                height:3rem;
+                width:10rem;
+                background: rgb(185, 21, 21);
+                color:white;
+                font-size:1.2rem;
+                border:none;
+                outline:none;
+                border-radius:30px;
+            }
+            #outpt{
+                font-size: 1.5rem;
+                font-weight: 600;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <header>SCRAMBLE MY WORDS</header>
+        <div class="container">
+            <input type="text" id="inpt" placeholder="input your word">
+            <input type="button" value="SCRAMBLE" id="btn">
+            <label id="outpt" class="hidden">a</label>
+        </div>
+        <script>
+            let input=document.querySelector("#inpt");
+            let btn=document.querySelector("#btn");
+            let output=document.querySelector("#outpt");
+            let str,newstr;
+
+            btn.addEventListener("click",()=>{
+                str=input.value;
+                newstr=scramble(str.split("")).join("");
+                output.style.visibility="visible";
+                output.innerHTML=newstr;
+            });
+
+            scramble=(str)=>{
+                for(let i=str.length-1;i>=0;i--){
+                    let j=Math.floor(Math.random()*(i));
+                    [str[i],str[j]]=[str[j],str[i]];
+                }
+                return str;
+            }
+        </script>
+    </body>
+</html>

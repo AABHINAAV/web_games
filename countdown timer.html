@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>countdown timer</title>
+    </head>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            background:rgb(90, 233, 46);
+        }
+        body{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container{
+            display: flex;            
+            flex-direction: row;
+        }
+        input[type="number"]{
+            margin:0.5rem;
+            height:5rem;
+            width:5rem;
+            outline:none;
+            background:white;
+            color:red;
+            font-size:1.8em;
+            text-align: center;
+            border-radius:50%;
+            background:rgb(239, 251, 71);
+        }
+        input[type="button"]{
+            height:2.5rem;
+            width:8rem;
+            outline:none;
+            background:white;
+            font-size:1.5em;
+            color:red;
+            margin:1rem;
+            border-radius:30px;
+            padding: 0 1em;
+            background:rgb(239, 251, 71);
+        }
+    </style>
+    <body>
+        <div class="container">
+            <input type="number" id="hr">
+            <input type="number" id="min">
+            <input type="number" id="sec">
+        </div>
+        <input type="button" value="start" id="btn">
+        <script>
+            var hr=document.querySelector("#hr");
+            var min=document.querySelector("#min");
+            var sec=document.querySelector("#sec");
+            var mytime;
+            document.querySelector("#btn").addEventListener("click",()=>{
+                h=parseInt(hr.value);
+                m=parseInt(min.value);
+                s=parseInt(sec.value);
+                mytime=setInterval(()=>{
+                    if(s>0){
+                        s--;
+                    }
+                    else{
+                        if(m>0){
+                        s=59;
+                        m--;
+                        }
+                        else if(m==0&&h>0){
+                            m=59;
+                            s=59;
+                            h--;
+                        }
+                        else if(m==0&&h==0&&s==0){
+                            clearInterval(mytime);
+                        }
+                    }
+                    hr.value=h;
+                    min.value=m;
+                    sec.value=s;  
+                },1000);
+            });
+        </script>
+    </body>
+</html>
