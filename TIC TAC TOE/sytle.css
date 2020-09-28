@@ -1,0 +1,77 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background:rgb(6, 104, 104);
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    font-size:3rem;
+    margin-bottom:2rem;
+    color:white;
+    border-bottom:2px solid white;
+}
+p , .turn{
+    font-size:1.5rem;
+    margin-bottom:1rem;
+    color:white;
+}
+.turn{
+    color:red;
+}
+.content{
+    width:80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.zero , .katta{
+    color:white;
+    font-size:10rem;
+}
+td{
+    height:100px;
+    width:100px;
+    border-radius:1rem;
+    background:rgb(0, 255, 242);
+    text-align: center;
+    font-size: 3rem;
+    color:rgb(9, 18, 37);
+    cursor: pointer;
+}
+.resultPage{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    height:50vh;
+    width:70vh;
+    border-radius:2rem;
+    padding:50px;
+    text-align:center;
+    background:rgb(219, 212, 212);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.result{
+    margin-bottom:2rem;
+}
+.reset{
+    margin-top:1rem;
+    height:2rem;
+    width:10rem;
+    font-size:1.2rem;
+    border-radius:1rem;
+    outline:none;
+    background:rgb(0, 255, 242);
+    color:rgb(9, 18, 37);
+}

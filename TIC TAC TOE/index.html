@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic tic toe</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+
+<body>
+    <h1>TIC TAC TOE</h1>
+    <p>Now the turn of player placing "<span class="turn">X</span>"</p>
+    <div class="content">
+        <div class="zero">0</div>
+        <table>
+            <tr>
+                <td class="r1" onclick='giveSign(event)'></td>
+                <td class="r2" onclick='giveSign(event)'></td>
+                <td class="r3" onclick='giveSign(event)'></td>
+            </tr>
+            <tr>
+                <td class="r4" onclick='giveSign(event)'></td>
+                <td class="r5" onclick='giveSign(event)'></td>
+                <td class="r6" onclick='giveSign(event)'></td>
+            </tr>
+            <tr>
+                <td class="r7" onclick='giveSign(event)'></td>
+                <td class="r8" onclick='giveSign(event)'></td>
+                <td class="r9" onclick='giveSign(event)'></td>
+            </tr>
+        </table>
+        <div class="katta">X</div>
+    </div>
+
+    <!-- result shower -->
+    <div class="resultPage">
+        <div class="result"></div>
+        <button class="reset" onclick='reset()'>play new game</button>
+    </div>
+
+    <!-- if you want to play new game from between -->
+    <button class="reset" onclick='reset()'>play new game</button>
+    <script src="main.js"></script>
+</body>
+
+</html>
